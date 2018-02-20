@@ -1,0 +1,16 @@
+<%
+package template
+
+type Home struct {}
+
+func (tmpl *Home) Render(ctx context.Context, w io.Writer) {
+	p := getPrinter(ctx)
+%>
+
+<ego:Page Title="Home">
+	<p>
+		<% p.Fprintf(w, "greeting") %>
+	</p>
+</ego:Page>
+
+<% } %>

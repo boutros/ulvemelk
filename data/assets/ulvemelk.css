@@ -1,0 +1,57 @@
+:root  { --color-light-grey: #e5e5e5;
+	     --color-black: #1a1a1a;
+		 --color-white: #fff;
+		 --size-small: 1em;
+		 --size-medium: 1.75em;
+		 --size-large: 2.25em;
+		 --for-phone-only: 599px;
+		 --for-table-portrait-up: 600px;
+		 --for-tablet-landscape-up: 900px;
+		 --for-desktop-up: 1200px;
+		 --for-big-dekstop-up: 1900px;
+	}
+
+*      { box-sizing: border-box; }
+body   { margin: 0; padding: 0; background-color: var(--color-light-grey);
+         font-family: arial; }
+ul     { list-style-type: none; padding: 0; margin: 0; }
+main   { background-color: var(--color-white); }
+input  { font-size: 100%; }
+
+/* TEMP */
+p, h1, h2 { margin: 0; }
+
+
+@media (max-width: 1980px) {
+	.container { padding: 0 1em; }
+}
+
+@media (min-width: 1200px) {
+	.container { margin: auto; max-width: 1200px; }
+}
+
+header a         { color: var(--color-white); }
+header a:visited { color: var(--color-white); }
+
+.header-black  { background-color: var(--color-black); color: var(--color-white);  padding: 1em 0; }
+.header-logo   { display: inline-block;}
+.header-menu  { float: right;}
+.header-search { padding: 3em; background-image: url(/static/ulvemelk.jpg); background-size: cover; font-size: var(--size-medium); }
+.header-search input { width: 80%; height: 2em; padding: 1em; }
+
+@media (min-width: 600px) {
+	.footer-adress { display: inline-block; width: 50%; float: left;}
+	.footer-menu   { display: inline-block; width: 50%; text-align: right; float: rght;}
+}
+.footer-black { background-color: var(--color-black); color: var(--color-white); padding: 2em 0;}
+.footer-adress { margin-bottom: 2em; }
+.footer-adress h2 { margin: 1em 0; }
+.footer-menu { margin-top: 3em; }
+.footer-menu li { line-height: 1.5em; }
+.footer-menu a { color: var(--color-white); }
+.footer-menu a:visited { color: var(--color-white); }
+.footer-social-links     { margin-top: 1em; }
+.footer-social-links img { height: 1em; margin-left: 1em; }
+.footer-oslo-kommune { text-align: center; vertical-align: middle; padding: 1em;}
+.footer-oslo-kommune a { text-decoration: none; color: var(--color-black); font-size: var(--size-medium); font-weight: bold}
+.footer-oslo-kommune img { width: 40px; position: relative; bottom: -10px; margin-right: 10px;}
