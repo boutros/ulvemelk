@@ -45,7 +45,9 @@ func (p *Page) Render(ctx context.Context, w io.Writer) {
 			</div>
 			<div class="header-search">
 				<div class="container">
-					<input type="search" value="<%= p.Query %>" />
+					<form action="/search" method="GET">
+						<input type="search" name="q" value="<%= p.Query %>" />
+					</form>
 				</div>
 			</div>
 		</header>

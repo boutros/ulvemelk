@@ -19,4 +19,4 @@ build: clean assets templates
 	go build
 
 dev: templates
-	go run -tags dev *.go
+	go run -tags dev cmd/ulvemelk/ulvemelk.go

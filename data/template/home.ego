@@ -1,16 +1,31 @@
 <%
 package template
 
-type Home struct {}
+type Home struct {
+	Searches []struct{
+		Title string
+		Img   string
+		Desc  string
+		Query string
+	}
+}
 
 func (tmpl *Home) Render(ctx context.Context, w io.Writer) {
-	p := getPrinter(ctx)
+	//p := getPrinter(ctx)
 %>
 
 <ego:Page Title="Home">
-	<p>
-		<% p.Fprintf(w, "greeting") %>
-	</p>
+	<ul class="home-search-links">
+		<% for _, search := range tmpl.Searches { %>
+			<a href="/search?q=<%= search.Query %>">
+				<li>
+					<img src="<%= search.Img %>" />
+					<h2><%= search.Title %></h2>
+					<p><%= search.Desc %></p>
+				</li>
+			</a>
+		<% } %>
+	</ul>
 </ego:Page>
 
 <% } %>

@@ -1,0 +1,22 @@
+<%
+package template
+
+import "github.com/boutros/ulvemelk"
+
+type Search struct {
+	Results ulvemelk.SearchResults
+}
+
+func (tmpl *Search) Render(ctx context.Context, w io.Writer) {
+	//p := getPrinter(ctx)
+%>
+
+<ego:Page Title="Search">
+	<ul class="search-results">
+		<% for _, hit := range tmpl.Results.Hits { %>
+			<li><h3><%= hit.Title %></h3></li>
+		<% } %>
+	</ul>
+</ego:Page>
+
+<% } %>
