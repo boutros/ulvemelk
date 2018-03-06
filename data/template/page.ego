@@ -20,84 +20,86 @@ func (p *Page) Render(ctx context.Context, w io.Writer) {
 	<link href="/static/ulvemelk.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-	<body>
-		<header>
-			<div class="header-black">
-				<div class="container">
-					<div class="header-logo">
-						<h1>DEICHMAN</h1>
-					</div>
-					<div class="header-menu">
-						<strong><% P.Fprintf(w, "Footer.currentLanguage") %></strong>
-						&nbsp;
-						<a href="/lang"><% P.Fprintf(w, "Footer.languageChoice") %></a>
-						&nbsp;
-						<% /*if p.LoggedIn { %>
-							<a href="/profile"><% P.Fprintf(w, "SearchHeader.myProfile") %></a>
-							&nbsp;
-							<a href="/logout"><% P.Fprintf(w, "Navigation.logout") %></a>
-						<% } else { %>
-							<a href="/login"><% P.Fprintf(w, "Navigation.logIn") %></a>
-						<% } */%>
-					</div>
-				</div>
-
-			</div>
-			<div class="header-search">
-				<div class="container">
-					<form action="/search" method="GET">
-						<input type="search" name="q" value="<%= p.Query %>" />
-					</form>
-				</div>
-			</div>
-		</header>
-		<main>
+	<header>
+		<div class="header-black">
 			<div class="container">
-				<% if p.Yield != nil { %><% p.Yield() %><% } %>
-			</div>
-		</main>
-		<footer>
-			<div class="footer-black">
-				<div class="container">
-					<div class="footer-adress">
-						<h2>DEICHMAN</h2>
-						<% P.Fprintf(w, "Footer.info") %>
-					</div>
-					<nav class="footer-menu">
-						<ul>
-			                <li>
-			                	<a href="https://www.deichman.no/kontakt-oss"><% P.Fprintf(w, "Footer.contactUs") %></a>
-			                </li>
-			                <li>
-			                	<a href="https://www.deichman.no/bibliotekene"><% P.Fprintf(w, "Footer.openingHours") %></a>
-			                </li>
-			                <li>
-			                	<a href="https://www.deichman.no/slik-laner-du"><% P.Fprintf(w, "Footer.howToLoan") %></a>
-			                </li>
-			                <li>
-			                	<a href="https://www.deichman.no/om-oss"><% P.Fprintf(w, "Footer.aboutUs") %></a>
-			                </li>
-			                <li>
-			                	<a href="https://www.deichman.no/ofte-stilte-sporsmal-om-nytt-biblioteksystem"><% P.Fprintf(w, "Footer.faq") %></a>
-			                </li>
-			                <li>
-			                	<a href="https://goo.gl/forms/QvwgiEhD2rdsWZLv1"><% P.Fprintf(w, "Footer.feedback") %></a>
-			                </li>
-						</ul>
-						<div class="footer-social-links">
-							<a href="https://www.flickr.com/photos/deichmanske/"><img src="/static/icon_some_flickr.svg" /></a>
-							<a href="https://www.instagram.com/deichman.hovedbiblioteket/"><img src="/static/icon_some_instagram.svg" /></a>
-							<a href="https://twitter.com/deichman_oslo"><img src="/static/icon_some_twitter.svg" /></a>
-							<a href="https://www.facebook.com/deichman.hovedbiblioteket/"><img src="/static/icon_some_facebook.svg" /></a>
-						</div>
-					</nav>
+				<div class="header-logo">
+					<h1>DEICHMAN</h1>
+				</div>
+				<div class="header-menu">
+					<strong><% P.Fprintf(w, "Footer.currentLanguage") %></strong>
+					&nbsp;
+					<a href="/lang"><% P.Fprintf(w, "Footer.languageChoice") %></a>
+					&nbsp;
+					<% /*if p.LoggedIn { %>
+						<a href="/profile"><% P.Fprintf(w, "SearchHeader.myProfile") %></a>
+						&nbsp;
+						<a href="/logout"><% P.Fprintf(w, "Navigation.logout") %></a>
+					<% } else { %>
+						<a href="/login"><% P.Fprintf(w, "Navigation.logIn") %></a>
+					<% } */%>
 				</div>
 			</div>
-			<div class="footer-oslo-kommune">
-				<a href="https://oslo.kommune.no"><img src="/static/oslo-kommune.png" />OSLO KOMMUNE</a>
+
+		</div>
+		<div class="header-search">
+			<div class="container">
+				<form action="/search" method="GET" data-pjax="#page-content">
+					<input id="search" type="search" name="q" value="<%= p.Query %>" />
+				</form>
 			</div>
-		</footer>
-	</body>
+		</div>
+	</header>
+	<main>
+		<div class="container" id="page-content">
+			<% if p.Yield != nil { %><% p.Yield() %><% } %>
+		</div>
+	</main>
+	<footer>
+		<div class="footer-black">
+			<div class="container">
+				<div class="footer-adress">
+					<h2>DEICHMAN</h2>
+					<% P.Fprintf(w, "Footer.info") %>
+				</div>
+				<nav class="footer-menu">
+					<ul>
+						<li>
+							<a href="https://www.deichman.no/kontakt-oss"><% P.Fprintf(w, "Footer.contactUs") %></a>
+						</li>
+						<li>
+							<a href="https://www.deichman.no/bibliotekene"><% P.Fprintf(w, "Footer.openingHours") %></a>
+						</li>
+						<li>
+							<a href="https://www.deichman.no/slik-laner-du"><% P.Fprintf(w, "Footer.howToLoan") %></a>
+						</li>
+						<li>
+							<a href="https://www.deichman.no/om-oss"><% P.Fprintf(w, "Footer.aboutUs") %></a>
+						</li>
+						<li>
+							<a href="https://www.deichman.no/ofte-stilte-sporsmal-om-nytt-biblioteksystem"><% P.Fprintf(w, "Footer.faq") %></a>
+						</li>
+						<li>
+							<a href="https://goo.gl/forms/QvwgiEhD2rdsWZLv1"><% P.Fprintf(w, "Footer.feedback") %></a>
+						</li>
+					</ul>
+					<div class="footer-social-links">
+						<a href="https://www.flickr.com/photos/deichmanske/"><img src="/static/icon_some_flickr.svg" /></a>
+						<a href="https://www.instagram.com/deichman.hovedbiblioteket/"><img src="/static/icon_some_instagram.svg" /></a>
+						<a href="https://twitter.com/deichman_oslo"><img src="/static/icon_some_twitter.svg" /></a>
+						<a href="https://www.facebook.com/deichman.hovedbiblioteket/"><img src="/static/icon_some_facebook.svg" /></a>
+					</div>
+				</nav>
+			</div>
+		</div>
+		<div class="footer-oslo-kommune">
+			<a href="https://oslo.kommune.no"><img src="/static/oslo-kommune.png" />OSLO KOMMUNE</a>
+		</div>
+	</footer>
+	<script src="/static/ulvemelk.js"></script>
+	<script>
+		pjax.setup()
+	</script>
 </body>
 </html>
 <% } %>

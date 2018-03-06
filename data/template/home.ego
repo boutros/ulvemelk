@@ -17,7 +17,7 @@ func (tmpl *Home) Render(ctx context.Context, w io.Writer) {
 <ego:Page Title="Home">
 	<ul class="home-search-links">
 		<% for _, search := range tmpl.Searches { %>
-			<a href="/search?q=<%= search.Query %>">
+			<a href="/search?q=<%= search.Query %>" data-pjax="page-content">
 				<li>
 					<img src="<%= search.Img %>" />
 					<h2><%= search.Title %></h2>
