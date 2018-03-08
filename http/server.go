@@ -90,7 +90,7 @@ func (s *Server) setupRouting() {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
 		}
-		http.Redirect(w, r, "/", http.StatusFound)
+		http.Redirect(w, r, r.Referer(), http.StatusFound)
 	})
 	s.mux.Get("/", func(w http.ResponseWriter, r *http.Request) {
 		var tmpl template.Home
